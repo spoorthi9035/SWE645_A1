@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Department Survey</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgray;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            background-color: #FFCC33;
+            color: #006633;
+            padding: 30px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.61);
+            border: 5px solid #006633;
+        }
+
+        /* Form Styles */
+        form {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #006633;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+
+        /* Label Styles specified for required Fields */
+        label[for="username"]:after,
+        label[for="address"]:after,
+        label[for="city"]:after,
+        label[for="state"]:after,
+        label[for="zip"]:after,
+        label[for="telephone"]:after,
+        label[for="email"]:after,
+        label[for="url"]:after,
+        label[for="survey-date"]:after,
+        label[for="graduation-month"]:after,
+        label[for="graduation-year"]:after,
+        label[for="recommend"]:after {
+            content: " *";
+            color: red;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #403c3cd0;
+            color: #ffcc33;
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .university-logo img {
+            width: 250px;
+            height: auto;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+        }
+
+
+        button[type="submit"] {
+            background-color: #FFCC33;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        button[type="reset"] {
+            background-color: #FFCC33;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar on Top of the Page -->
+    <nav class="w3-bar w3-black navbar">
+        <a href="http://spoorthi-swe645-hw1.s3-website.us-east-2.amazonaws.com/" class="w3-bar-item w3-button w3-padding-large">
+            <i class="fa fa-home w3-xxlarge"></i>
+            <span>HOME</span>
+        </a>
+        </a>
+        <a href="#contact" class="w3-bar-item w3-button w3-padding-large">
+            <i class="fa fa-envelope w3-xxlarge"></i>
+            <span>CONTACT</span>
+        </a>
+
+        <a href="http://3.19.148.116/survey.html" class="w3-bar-item w3-button w3-padding-large">
+            <i class="fa fa-envelope w3-xxlarge"></i>
+            <span>SURVEY</span>
+        </a>
+    </nav>
+    <h1>CS Department Survey</h1>
+   
+    <div id="greeting" style="display: none;">
+
+    </div>
+
+    <div style="cursor: pointer;" onclick="editName()">
+        Edit name
+    </div>
+
+    <form id="survey-form" autocomplete="on">
+
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Spoorthi" required
+                autofocus>
+        </div>
+
+        <!-- Address Section -->
+        <div class="form-group">
+            <label for="address">Street Address:</label>
+            <input type="text" id="address" name="address" class="form-control" required>
+        </div>
+
+        <!-- City Section -->
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+        </div>
+
+        <!-- State Section -->
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" class="form-control" required>
+        </div>
+
+        <!-- ZIP Code Section -->
+        <div class="form-group">
+            <label for="zip">ZIP Code:</label>
+            <input type="tel" id="zip" name="zip" pattern="\d{5}" placeholder="12345" class="form-control" required>
+        </div>
+
+        <!-- Telephone Number Section -->
+        <div class="form-group">
+            <label for="telephone">Telephone Number:</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="5715526562" class="form-control" required>
+        </div>
+
+        <!-- Email Section -->
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="sjupudi2@gmu.edu" class="form-control" required>
+        </div>
+
+        <!-- URL Section -->
+        <div class="form-group">
+            <label for="url">Website URL:</label>
+            <input type="url" id="url" name="url" placeholder="http://facebook.com" class="form-control" required>
+        </div>
+
+        <!-- Date of Survey Section -->
+        <div class="form-group">
+            <label for="survey-date">Date of Survey:</label>
+            <input type="date" id="survey-date" name="survey-date" class="form-control" required>
+        </div>
+
+        <!-- Liked Most Section --Checkboxes -->
+        <div class="form-group">
+            <label>What did you like most about the campus?</label>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus1" name="liked-campus" class="form-check-input" value="Students">
+                <label class="form-check-label" for="liked-campus1">Students</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus2" name="liked-campus" class="form-check-input" value="Location">
+                <label class="form-check-label" for="liked-campus2">Location</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus3" name="liked-campus" class="form-check-input" value="Campus">
+                <label class="form-check-label" for="liked-campus3">Campus</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus4" name="liked-campus" class="form-check-input"
+                    value="Atmosphere">
+                <label class="form-check-label" for="liked-campus4">Atmosphere</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus5" name="liked-campus" class="form-check-input"
+                    value="Dorm Rooms">
+                <label class="form-check-label" for="liked-campus5">Dorm Rooms</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="liked-campus6" name="liked-campus" class="form-check-input" value="Sports">
+                <label class="form-check-label" for="liked-campus6">Sports</label>
+            </div>
+        </div>
+
+        <!-- How Interested Section (Radio Buttons) -->
+        <div class="form-group">
+            <label>How did you become interested in the university?</label>
+            <div class="form-check">
+                <input type="radio" id="interest1" name="interest" class="form-check-input" value="Friends">
+                <label class="form-check-label" for="interest1">Friends</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="interest2" name="interest" class="form-check-input" value="Television">
+                <label class="form-check-label" for="interest2">Television</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="interest3" name="interest" class="form-check-input" value="Internet">
+                <label class="form-check-label" for="interest3">Internet</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="interest4" name="interest" class="form-check-input" value="Other">
+                <label class="form-check-label" for="interest4">Other</label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4" cols="50" class="form-control"></textarea>
+        </div>
+
+        <!-- Graduation Month Section -->
+        <div class="form-group">
+            <label for="graduation-month">High School Graduation Month:</label>
+            <input list="months" id="graduation-month" name="graduation-month" class="form-control" required>
+            <datalist id="months">
+                <option value="January">
+                <option value="February">
+                <option value="March">
+                <option value="April">
+                <option value="May">
+                <option value="June">
+                <option value="July">
+                <option value="August">
+                <option value="September">
+                <option value="October">
+                <option value="November">
+                <option value="December"> </option>
+                </option>
+                </option>
+                </option>
+                </option>
+                </option>
+                </option>
+                </option>
+                </option>
+
+            </datalist>
+        </div>
+
+        <!-- Graduation Year Section -->
+        <div class="form-group">
+            <label for="graduation-year">High School Graduation Year:</label>
+            <input type="text" id="graduation-year" name="graduation-year" pattern="\d{4}" placeholder="YYYY"
+                class="form-control" required>
+        </div>
+        <!-- Data Field for Average & Maximum Calculation -->
+        <div class="form-group">
+            <label for="data">Data (Enter 10 comma-separated numbers between 1 and 100):</label>
+            <input type="text" id="data" name="data" class="form-control" required>
+        </div>
+
+        <!-- Output Fields for Average & Maximum -->
+        <div class="form-group">
+            <label for="average">Average:</label>
+            <p id="average"></p>
+        </div>
+        <div class="form-group">
+            <label for="maximum">Maximum:</label>
+            <p id="maximum"></p>
+        </div>
+
+        <!-- Recommendation Section -->
+        <div class="form-group">
+            <label for="recommend">How likely are you to recommend this school to other prospective students?</label>
+            <select id="recommend" name="recommend" class="form-control" required>
+                <option value="Very Likely">Very Likely</option>
+                <option value="Likely">Likely</option>
+                <option value="Unlikely">Unlikely</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</body>
+
+</html>
+
+<footer>
+    <div class="footer-content">
+        <div class="university-logo">
+            <img src="gmu.jpg" alt="George Mason University Logo" width="150">
+        </div>
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>George Mason University</p>
+            <p>4400 University Dr</p>
+            <p>Fairfax, VA 22030</p>
+            <p>Phone: (703) 993-1000</p>
+            <p>Email: masongrad@gmu.edu</p>
+        </div>
+    </div>
+</footer>
+<script>
+
+    function editName() {
+        const username = prompt("Please enter your username:");
+        if (username !== null && username !== "") {
+            setCookie("username", username, 7);
+            displayGreeting(username);
+        } else {
+            // alert("No username entered. Cookie not set.");
+        }
+        // console.log("Username cookie not found.");
+
+    }
+    // Function to calculate average and maximum
+    function calculateAverageAndMaximum() {
+        var dataInput = document.getElementById("data").value;
+        var numbers = dataInput.split(",").map(Number);
+
+        if (numbers.length === 10) {
+            
+            if (numbers.every(num => num >= 1 && num <= 100)) {
+                var sum = numbers.reduce((total, num) => total + num, 0);
+                var average = sum / 10;
+                var maximum = Math.max(...numbers);
+
+                document.getElementById("average").textContent = average.toFixed(2);
+                document.getElementById("maximum").textContent = maximum;
+            } else {
+                alert("Please ensure that all numbers are between 1 and 100.");
+            }
+        } else {
+            alert("Please enter exactly 10 comma-separated numbers.");
+        }
+    }
+
+    // Attach the calculateAverageAndMaximum function to the "data" field's change event
+    document.getElementById("data").addEventListener("change", calculateAverageAndMaximum);
+
+
+
+    function validateForm() {
+        // Name validation: should contain only alphabets
+        var nameInput = document.getElementById("username").value;
+        var nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(nameInput)) {
+            alert("Name should contain only alphabets.");
+            return false;
+        }
+
+        // Address validation: should contain only appropriate characters
+        var addressInput = document.getElementById("address").value;
+        var cityInput = document.getElementById("city").value;
+        var stateInput = document.getElementById("state").value;
+        var addressRegex = /^[A-Za-z0-9\s.,#-]+$/;
+        if (!addressRegex.test(addressInput) || !addressRegex.test(cityInput) || !addressRegex.test(stateInput)) {
+            alert("Address, City, and State should contain only appropriate characters.");
+            return false;
+        }
+
+        // Checkbox validation: at least two checkboxes should be checked
+        var checkboxes = document.querySelectorAll('input[type="checkbox"][name="liked-campus"]:checked');
+        if (checkboxes.length < 2) {
+            alert("Please check at least two options for what you liked most about the campus.");
+            return false;
+        }
+
+        // Radio button validation: at least one radio button should be selected
+        var radioButtons = document.querySelectorAll('input[type="radio"][name="interest"]:checked');
+        if (radioButtons.length == 0) {
+            alert("Please select how you became interested in the university.");
+            return false;
+        }
+
+        // Email validation: should be in a valid format
+        var emailInput = document.getElementById("email").value;
+        var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        if (!emailRegex.test(emailInput)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // If all validations pass, the form will submit
+        return true;
+    }
+
+    document.getElementById("zip").addEventListener("blur", function () {
+        const enteredZip = this.value.trim();
+        const cityField = document.getElementById("city");
+        const stateField = document.getElementById("state");
+        const zipErrorField = document.getElementById("zip-error");
+
+        // Make an AJAX call to fetch the JSON data
+        fetch("zipcodes.json")
+            .then(response => response.json())
+            .then(data => {
+                const matchingZip = data.zipcodes.find(zipData => zipData.zip === enteredZip);
+                console.log(matchingZip);
+                if (matchingZip) {
+                    cityField.value = matchingZip.city;
+                    stateField.value = matchingZip.state;
+                } else {
+                    console.log("error")
+                    cityField.value = "";
+                    stateField.value = "";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching zipcodes: " + error);
+            });
+    });
+
+
+    
+    document.querySelector('button[type="submit"]').onclick = function () {
+        return validateForm();
+    };
+
+    function setCookie(name, value, days) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+    }
+
+    function getCookie(name) {
+        const cookies = document.cookie.split("; ");
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split("=");
+            console.log(cookieName)
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Cookie not found
+    }
+    const username = getCookie("username");
+    if (username) {
+        displayGreeting(username);
+    } else {
+        const username = prompt("Please enter your username:");
+
+        if (username !== null && username !== "") {
+            setCookie("username", username, 7);
+            displayGreeting(username);
+        } else {
+            // alert("No username entered. Cookie not set.");
+        }
+        // console.log("Username cookie not found.");
+    }
+
+    function displayGreeting(name) {
+        const today = new Date();
+        const hour = today.getHours();
+        let greeting;
+        if (hour < 12) {
+            greeting = "Good Morning";
+        } else if (hour < 18) {
+            greeting = "Good Afternoon";
+        } else {
+            greeting = "Good Evening";
+        }
+       
+        document.getElementById("greeting").innerHTML = `${greeting}, ${name}, welcome to Survey`;
+        document.getElementById("greeting").style.display = "block";
+    }
+</script>
+</body>
+
+</html>
